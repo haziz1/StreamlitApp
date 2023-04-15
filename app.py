@@ -76,7 +76,7 @@ st.set_page_config(layout="wide")
 A,B,C,D = st.tabs(["Introduction", "Modelling & Results", "Summary & Testing","Next Steps"])
 
 with A:
-    Header("Sentiment Analysis for Prescription Drugs Reviews")
+    Header("Sentiment Analysis for Prescription Drug Reviews")
     # st.text(" ")
     st.subheader("Creating a Machine Learning model that uses consumer comments to perform sentiment analysis")
     paragraph("This sentiment model uses a dataset that provides patient reviews on various prescription drugs related to different health conditions. Patient responses are recorded on three key aspects - benefits, side effects and overall comments. Additionally, ratings are available concerning overall satisfaction of the prescribed drug. (Credit: Drug Review Dataset on UCI Machine Learning Repository)")
