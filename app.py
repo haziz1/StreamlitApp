@@ -76,7 +76,7 @@ st.set_page_config(layout="wide")
 A,B,C,D = st.tabs(["Introduction", "Modelling & Results", "Summary & Testing","Next Steps"])
 
 with A:
-    Header("Sentiment Analysis for Prescription Drug Reviews")
+    Header("Sentiment Analysis for Prescription Drugs Reviews")
     # st.text(" ")
     st.subheader("Creating a Machine Learning model that uses consumer comments to perform sentiment analysis")
     paragraph("This sentiment model uses a dataset that provides patient reviews on various prescription drugs related to different health conditions. Patient responses are recorded on three key aspects - benefits, side effects and overall comments. Additionally, ratings are available concerning overall satisfaction of the prescribed drug. (Credit: Drug Review Dataset on UCI Machine Learning Repository)")
@@ -125,19 +125,11 @@ with A:
     # generate_wordcloud(feature_names_comment,'comments')
     # wordcloud_img3 = mpimg.imread('comments.png')
     # img1, img2 = st.columns([2,2])
-    # with img1:
-    #     wordcloud_img = mpimg.imread('benefits.png')
-    #     plt.imshow(wordcloud_img)
-    #     plt.axis('off')
-    # with img2:
-    #     wordcloud_img2 = mpimg.imread('sideeffects.png')
-    #     plt.imshow(wordcloud_img2)
-    #     plt.axis('off')
     st.subheader("Features of the Testing Dataset")
     paragraph("Extracting important features from the benefits and side effects columns reveal the following")
     st.text("")
-    wordcloud_img = mpimg.imread('benefits.png')
-    wordcloud_img2 = mpimg.imread('sideeffects.png')
+    wordcloud_img = mpimg.imread('benefits (Presaved for app).png')
+    wordcloud_img2 = mpimg.imread('sideeffects (Presaved for app).png')
     col1, mid, col2 = st.columns([5,0.4,5])
     with col1:
         st.image(wordcloud_img, width=500,use_column_width=True,caption = 'Benefits Review')
@@ -173,7 +165,7 @@ with A:
     # generate_wordcloud(drugs,'drugnames')
     col1, mid, col2 = st.columns([3,7,1])
     with mid :
-        wordcloud_img = mpimg.imread('drugnames.png')
+        wordcloud_img = mpimg.imread('drugnames (Presaved for app).png')
         st.image(wordcloud_img, caption='Frequent Drug Names', use_column_width=False, width=550)
 
 
@@ -247,7 +239,7 @@ with B:
 
     st.subheader(":blue[Initializing Models]")
     paragraph('Using 2 different vectorizing techniques with a LinearSVC Model:')
-    indentp('*Note - Testing accuracy refers to models performance on unseen training data. Secondly, each model is compared to its predecessor*')
+    indentp('*Note - Training Set accuracy refers to models performance on unseen training data. Secondly, each model is compared to the respective previous model*')
 
     # 1- Training Dataset Accuracy = 75.91% & F1-Score = 84.27%
     # 2- Testing Dataset Accuracy = 75.68% & F1-Score = 83.99%  
@@ -288,7 +280,7 @@ with B:
         paragraph('<b>2 - Use GridSearchCV to find the best Machine Learning Model from the following : </b>')
         indentp('1 - Logistic Regression',padding=2)
         indentp('2 - Naïve Bayes',padding =2 )
-        indentp('3 - LinearSVC',padding=2)
+        indentp('3 - <b>LinearSVC</b>',padding=2)
         indentp('4 - XGBClassifier',padding=2)
     with col3:
         paragraph('<b>3 - Hyperparameter tuning the winner - LinearSVC:</b>')
@@ -341,7 +333,7 @@ with B:
     col1, col2, col3,col4,col5 = st.columns(5)
     col1.metric("Cross Validation Score","89.1%","7.5pp")
     col2.metric("Training Set Accuracy", "88.1%","6.1pp")
-    col3.metric("Training Set F1 Score", "92.7","3.3pp")
+    col3.metric("Training Set F1 Score", "92.7%","3.3pp")
     col4.metric("Testing Set Accuracy", "85.5%","4.3pp")
     col5.metric("Testing F1 Score", "90.9%","2.2pp")
 
@@ -404,12 +396,14 @@ with C:
 
 with D:
     st.subheader(":blue[Mapping further improvements]")
-    indentp("As with any model, there are always a number of improvements that can be made to enchance accuracy:")
-    indentp("1 - Increase text corpus for analysis",padding =2)
+    indentp("As with any model, there are always a number of improvements that can be made to enchance accuracy. For this model we suggest the following : ")
+    indentp("1 - Increase text corpus for training",padding =2)
     indentp("2 - Testing the model by setting the threshold for Positive at a higher rating such as 7/8",padding = 2)
     indentp("3 - Splitting sentiment into Negative, Neutral & Positive to enchance quality of predicted sentiment",padding = 2)
     indentp("4 - Hyperparameter tuning the BERT model with greater number of features and sentence length input (Currently trained on max length of 128)",padding = 2 )
-    indentp("5 - Mapping drug names to sentiment to analyze drugwise sentiment",padding = 2) 
+    indentp("5 - Mapping drug names to sentiment to analyze drug wise sentiment",padding = 2) 
     st.text("")
     indentp("Incorporating the above should improve the accuracy, reliability and usefulness to the end users.")
+
+
 # streamlit run app.py --server.runOnSave true
