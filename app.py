@@ -179,7 +179,7 @@ with A:
 
 
 with B:
-    st.subheader(":violet[Introducing the Dataset & Preprocessing]")
+    st.subheader(":blue[Introducing the Dataset & Preprocessing]")
     indentp(f' Training dataset has <b> {df.shape[0]}</b> rows and <b>4 </b> columns')
     indentp('Following are some samples. *Do note that some of these columns are empty or lack important information. For example some rows have "None" or " - "*')
 
@@ -245,7 +245,7 @@ with B:
     proportion_df = pd.DataFrame(proportion_series).rename(columns={"LABEL_COLUMN": "Proportion"})
     st.table(proportion_df)
 
-    st.subheader(":violet[Initializing Models]")
+    st.subheader(":blue[Initializing Models]")
     paragraph('Using 2 different vectorizing techniques with a LinearSVC Model:')
     indentp('*Note - Testing accuracy refers to models performance on unseen training data. Secondly, each model is compared to its predecessor*')
 
@@ -277,7 +277,7 @@ with B:
 
     paragraph('It is clear that TfidfVectorizer & Lemmitization perform better so lets optimize the model further')
 
-    st.subheader(":violet[Improving TfidfVectorizer]")
+    st.subheader(":blue[Improving TfidfVectorizer]")
     paragraph('To improve the model, we can optimize each step of Model 2')
     paragraph('This entails the following : ')
     col1,col2,col3,col4 = st.columns(4)
@@ -314,7 +314,7 @@ with B:
     col5.metric("Testing Set F1 Score", "88.7%","0.7pp")
 
     st.text("")
-    st.subheader(":violet[Hol' Up, didn't you tell me the dataset was imbalanced?]")
+    st.subheader(":blue[Hol' Up, didn't you tell me the dataset was imbalanced?]")
     paragraph("Balancing dataset is a double edged sword. While undersampling & oversampling can improve accuracy, it can also cause loss of information or overfitting.")
 
     st.subheader("Model 4A - Undersampling")
@@ -333,7 +333,7 @@ with B:
 
     paragraph("As predicted, both techniques underperformed as compared to Model 3")
 
-    st.subheader(":violet[Introducing the BERT Model]")
+    st.subheader(":blue[Introducing the BERT Model]")
     paragraph("So far we have been tokenizing and using ngrams to predict sentiment. However, a critical part of natural language is understanding context & word associations before we predict sentiment.")
     paragraph("BERT - Bidirectional Encoder Representations from Transformers is a pre-trained transformer that has been trained on large corpus of text. It specializes in considering the context before and after a token to make predictions.")
     paragraph("It is hence not surprising that even a primitive BERT model outperforms the other models.")
@@ -346,10 +346,10 @@ with B:
     col5.metric("Testing F1 Score", "90.9%","2.2pp")
 
 with C:
-    st.subheader(":violet[Summarizing Learnings]")
+    st.subheader(":blue[Summarizing Learnings]")
     indentp("1 - Bert performed clearly the best across both training and testing datasets (In both F1 and accuracy metrics).")
     indentp("2 - Model 3 performed well on training dataset but didn't perform better than Model 2 on testing dataset. This indicates that hyperparamter tuning doesn't result in major accuracy increases (albeit a small increase in f1).")
-    st.subheader(":violet[Comparison of Model Metrics]")
+    st.subheader(":blue[Comparison of Model Metrics]")
     model_names = ['Model 1', 'Model 2', 'Model 3', 'Model 4A', 'Model 4B', 'Model 5']
     Testing_Set_Accuracies = [0.76, 0.81, 0.81, 0.70, 0.81, 0.86]
     Testing_Set_F1_Score = [.84, .88, .89, .71, .80, .91]
@@ -361,7 +361,7 @@ with C:
         df_metric = df[['Model', 'F1 Score']]
 
     # Create the bar chart using Altair
-    chart = alt.Chart(df_metric).mark_bar(color='purple').encode(
+    chart = alt.Chart(df_metric).mark_bar(color='#1E90FF').encode(
         x=alt.X('Model', axis=alt.Axis(labelAngle=0)),
         y=alt.Y(metric, title=metric),
         tooltip=['Model', metric]
@@ -377,7 +377,7 @@ with C:
     # Load the saved tokenizer
     tokenizer = BertTokenizer.from_pretrained('tokenizer_bertModel')
 
-    st.subheader(":violet[Testing the Model]") 
+    st.subheader(":blue[Testing the Model]") 
     paragraph("Want to test out the model yourself?")
     paragraph(" Type out any sentence from the model, our suggested sentences or if you're feeling lucky any sentence of your own! The model will try to predict the sentiment of the sentence")
 
@@ -403,7 +403,7 @@ with C:
     indentp('3 - I was initially hesitant to try this medication, but it has helped me manage my chronic pain better than anything else I have tried',padding = 2)
 
 with D:
-    st.subheader(":violet[Mapping further improvements]")
+    st.subheader(":blue[Mapping further improvements]")
     indentp("As with any model, there are always a number of improvements that can be made to enchance accuracy:")
     indentp("1 - Increase text corpus for analysis",padding =2)
     indentp("2 - Testing the model by setting the threshold for Positive at a higher rating such as 7/8",padding = 2)
@@ -411,5 +411,5 @@ with D:
     indentp("4 - Hyperparameter tuning the BERT model with greater number of features and sentence length input (Currently trained on max length of 128)",padding = 2 )
     indentp("5 - Mapping drug names to sentiment to analyze drugwise sentiment",padding = 2) 
     st.text("")
-    indentp("Incorporating the above should improve the accuracy, reliability and usefulness to the end users ")
+    indentp("Incorporating the above should improve the accuracy, reliability and usefulness to the end users.")
 # streamlit run app.py --server.runOnSave true
